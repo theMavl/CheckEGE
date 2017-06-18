@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Результаты ЕГЭ</string>
+    <string name="title_activity_new_settings">Настройки</string>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+    <string name="pref_header_data_sync">Автообновление</string>
+    <string name="pref_title_sync_frequency">Частота обновления</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>5 минут</item>
+        <item>15 минут</item>
+        <item>30 минут</item>
+        <item>1 час</item>
+        <item>3 часа</item>
+        <item>6 часов</item>
+        <item>Никогда</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>5</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_header_notifications">Уведомления</string>
+    <string name="pref_title_notifications_enabled">Включить уведомления</string>
+    <string name="pref_title_new_status">Изменился статус экзамена</string>
+    <string name="pref_title_new_result">Появился/изменился результат экзамена</string>
+    <string name="pref_title_ringtone">Рингтон</string>
+    <string name="pref_ringtone_silent">Без звука</string>
+    <string name="pref_title_vibrate">Вибросигнал</string>
+</resources>

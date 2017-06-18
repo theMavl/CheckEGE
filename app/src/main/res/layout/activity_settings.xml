@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mavl.showmethefuckingresults.SettingsActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Автоматическое обновление"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="160dp" />
+
+    <RadioGroup
+        android:id="@+id/srg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="207dp">
+
+        <RadioButton
+            android:id="@+id/s_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Отключить" />
+
+        <RadioButton
+            android:id="@+id/s_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Раз в 5 секунд" />
+
+        <RadioButton
+            android:id="@+id/s_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Раз в 10 секунд" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Применить"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <Button
+        android:id="@+id/debugreset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="reset" />
+
+</LinearLayout>
