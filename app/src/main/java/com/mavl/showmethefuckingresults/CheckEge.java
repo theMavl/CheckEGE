@@ -1,6 +1,5 @@
 package com.mavl.showmethefuckingresults;
 
-import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -12,16 +11,10 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -32,22 +25,17 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mavl.showmethefuckingresults.ObjectExam.DetailsActivity;
 import com.mavl.showmethefuckingresults.ObjectResult.Exam;
 import com.mavl.showmethefuckingresults.ObjectResult.Res;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +43,8 @@ import java.util.Map;
 import static com.mavl.showmethefuckingresults.MainActivity.SAVED_DATA;
 
 public class CheckEge extends Service {
-    public static final int DEFAULT_DELAY = 180;
+    public static final int DEFAULT_DELAY = 3600;
+    String URL;
     SharedPreferences sp;
     SharedPreferences defaultSp;
     SharedPreferences.Editor e;
@@ -71,6 +60,7 @@ public class CheckEge extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         defaultSp = PreferenceManager.getDefaultSharedPreferences(this);
         sp = getSharedPreferences(SAVED_DATA, Context.MODE_PRIVATE);
+        URL = getResources().getString(R.string.url_exams);
         participant = sp.getString("Participant", null);
         requestData(0);
         mainLoop();
@@ -86,7 +76,7 @@ public class CheckEge extends Service {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(delay * 60000);
+                        Thread.sleep(delay * 1000);
                     } catch (InterruptedException e1) {
                         e1.printStackTrace();
                     }
@@ -101,7 +91,7 @@ public class CheckEge extends Service {
 
     void getDelay() {
         delay = Integer.parseInt(defaultSp.getString("sync_frequency", "-2"));
-        if (delay == -2) {
+        if ((delay == -2)|| (delay < 10)){
             e = defaultSp.edit();
             e.putInt("sync_frequency", DEFAULT_DELAY);
             delay = DEFAULT_DELAY;
@@ -137,7 +127,7 @@ public class CheckEge extends Service {
         final Gson gson = (new GsonBuilder()).create();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, MainActivity.EXAM_URL, null, new com.android.volley.Response.Listener<JSONObject>() {
+                (Request.Method.GET, URL, null, new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject jsResponse) {
                         Log.d("onresponse","done");
@@ -305,7 +295,6 @@ public class CheckEge extends Service {
         killThread = true;
     }
 
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;

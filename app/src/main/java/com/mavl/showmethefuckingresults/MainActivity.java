@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +29,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mavl.showmethefuckingresults.ListAdapters.SubjectsListAdapter;
 import com.mavl.showmethefuckingresults.ObjectExam.DetailsActivity;
-import com.mavl.showmethefuckingresults.ObjectExam.ExamInDetails;
 import com.mavl.showmethefuckingresults.ObjectResult.Res;
 
 import org.json.JSONObject;

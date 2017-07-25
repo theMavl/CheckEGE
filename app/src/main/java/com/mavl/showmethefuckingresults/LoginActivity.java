@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         webLogin.getSettings().setSupportZoom(true);
 
         webLogin.getSettings().setBuiltInZoomControls(true);
-        webLogin.loadUrl("http://check.ege.edu.ru");
+        webLogin.loadUrl(getResources().getString(R.string.url_login));
     }
 
     public void success() {
